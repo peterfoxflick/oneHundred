@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		910547EA235A170200609181 /* ResponseDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910547E9235A170200609181 /* ResponseDataManager.swift */; };
 		9106FED5233044400074CF4E /* TaskDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9106FED4233044400074CF4E /* TaskDataManagerTests.swift */; };
 		91158B9F2329990E00EFF997 /* Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91158B9E2329990E00EFF997 /* Setup.swift */; };
 		91158BA12329A46800EFF997 /* DayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91158BA02329A46800EFF997 /* DayView.swift */; };
@@ -63,6 +64,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		910547E9235A170200609181 /* ResponseDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseDataManager.swift; sourceTree = "<group>"; };
 		9106FED4233044400074CF4E /* TaskDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDataManagerTests.swift; sourceTree = "<group>"; };
 		91158B9E2329990E00EFF997 /* Setup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setup.swift; sourceTree = "<group>"; };
 		91158BA02329A46800EFF997 /* DayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayView.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 				9148E72A2343A2B700E19535 /* GoalDataManager.swift */,
 				9133ABED2342691800EED636 /* TaskDataManager.swift */,
 				91F11732234BB6140083FCA8 /* PromptDataManager.swift */,
+				910547E9235A170200609181 /* ResponseDataManager.swift */,
 			);
 			path = "Data Managers";
 			sourceTree = "<group>";
@@ -417,6 +420,7 @@
 				9127898B2326B41000D5CBA4 /* ContentView.swift in Sources */,
 				91BBFCF323327EF800171847 /* GoalListViewModel.swift in Sources */,
 				91F11733234BB6140083FCA8 /* PromptDataManager.swift in Sources */,
+				910547EA235A170200609181 /* ResponseDataManager.swift in Sources */,
 				91158BA7232AABDA00EFF997 /* GoalViewModel.swift in Sources */,
 				91BC2E76232849C3009F62A9 /* CoreDataManager.swift in Sources */,
 				913E375F2345085A0075493C /* DayDataManager.swift in Sources */,

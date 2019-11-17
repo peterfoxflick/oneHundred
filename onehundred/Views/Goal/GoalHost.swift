@@ -17,6 +17,16 @@ struct GoalHost: View {
         self.goalVM = GoalViewModel(goalID: goalID)
     }
     
+    init(goalVM: GoalViewModel, edit: Bool){
+        self.goalVM = goalVM
+        
+        if(edit){
+            self.mode?.wrappedValue = .inactive
+        } else {
+            self.mode?.wrappedValue = .active
+        }
+    }
+    
     init(goalVM: GoalViewModel){
         self.goalVM = goalVM
     }

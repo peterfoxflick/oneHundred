@@ -18,14 +18,12 @@ struct ResponseListView: View {
     }
     
     var body: some View {
-        ScrollView(.horizontal) {
-            HStack{
+            VStack{
                 ForEach(self.responseListVM.responses){ response in
                     ResponseView(response: response)
                 }
                 
-            }
-        }
+            }.padding()
     }
 }
 
@@ -47,18 +45,41 @@ struct ResponseView: View {
             Text(response.prompt)
                 .lineLimit(nil)
             
-            TextField("Fill", text: $response.answer, onEditingChanged: save, onCommit: save)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .onDisappear(perform: {
-                        self.response.save()
-                    })
+            MultilineTextView(text: $response.answer)
+            .overlay(
+                   RoundedRectangle(cornerRadius: 16)
+                    .stroke(Color.gray, lineWidth: 2)
+               )
+//            TextField("Fill", text: $response.answer, onEditingChanged: save, onCommit: save)
+//                    .textFieldStyle(RoundedBorderTextFieldStyle())
+//                    .onDisappear(perform: {
+//                        self.response.save()
+//                    })
             .lineLimit(10)
-            .frame(width: 300, height: 200)
+                .frame(width: 300, height: 200)
             
         }.frame(width: 300, height: 300)
     }
         
 }
+
+struct MultilineTextView: UIViewRepresentable {
+    @Binding var text: String
+
+    func makeUIView(context: Context) -> UITextView {
+        let view = UITextView()
+        view.isScrollEnabled = true
+        view.isEditable = true
+        view.isUserInteractionEnabled = true
+        view.font = UIFont.systemFont(ofSize: 17.0)
+        return view
+    }
+
+    func updateUIView(_ uiView: UITextView, context: Context) {
+        uiView.text = text
+    }
+}
+
 
 //struct ResponseListView_Previews: PreviewProvider {
 //    static var previews: some View {

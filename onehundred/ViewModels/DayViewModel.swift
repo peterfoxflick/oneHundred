@@ -15,25 +15,29 @@ class DayViewModel: ObservableObject, Identifiable {
     var id:UUID
     @Published var count: Int
     @Published var isCheckpoint: Bool
+    @Published var goalId: UUID
 
     init(){
-        let day = CoreDataManager.shared.getFirstDay()
+        let day = DayDataManager().getFirstDay()
         self.id = day?.id ?? UUID()
         self.count = Int(day?.count ?? 1)
         self.isCheckpoint = day?.isCheckpoint ?? false
+        self.goalId = day?.goal?.id ?? UUID()
     }
     
     init(day:Day){
         self.id = day.id ?? UUID()
         self.count = Int(day.count)
         self.isCheckpoint = day.isCheckpoint
+        self.goalId = day.goal?.id ?? UUID()
     }
     
     init(id: UUID){
         self.id = id
-        let day = CoreDataManager.shared.getDay(id: id)
+        let day = DayDataManager().getDay(id: id)
         self.count = Int(day?.count ?? 1)
         self.isCheckpoint = day?.isCheckpoint ?? false
+        self.goalId = day?.goal?.id ?? UUID()
     }
 
 }

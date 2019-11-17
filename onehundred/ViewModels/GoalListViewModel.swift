@@ -18,6 +18,11 @@ class GoalListViewModel: ObservableObject {
     }
     
     func fetchAllGoals(){
-        goals = CoreDataManager.shared.getAllGoals().map(GoalViewModel.init)
+        goals = GoalDataManager().getAllGoals().map(GoalViewModel.init)
+    }
+    
+    func delete(id: UUID){
+        GoalDataManager().deleteGoal(id: id)
+        fetchAllGoals()
     }
 }

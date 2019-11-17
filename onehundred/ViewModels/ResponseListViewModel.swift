@@ -15,6 +15,9 @@ class ResponseListViewModel: ObservableObject {
     private var parentID: UUID
     private var parentType: ResponseParentType
     @Published var responses = [ResponseViewModel]()
+    
+    var responseDM = ResponseDataManager()
+
 
     
     init(parentID:UUID, parentType:ResponseParentType){
@@ -26,14 +29,14 @@ class ResponseListViewModel: ObservableObject {
         if (self.responses.count == 0) {
             let prompts = getAllPrompts()
             for (index, promptID) in prompts.enumerated() {
-                CoreDataManager.shared.addNewResponseToParent(promptID:promptID, parentID:self.parentID, order:index, parentType: self.parentType)
+                responseDM.addNewResponseToParent(promptID:promptID, parentID:self.parentID, order:index, parentType: self.parentType)
             }
             fetchAll()
         }
     }
     
     func fetchAll(){
-        self.responses = CoreDataManager.shared.getResponsesFromParent(parentType: self.parentType, parentID: self.parentID).map(ResponseViewModel.init).sorted(by: { return $0.order < $1.order})
+        self.responses = responseDM.getResponsesFromParent(parentType: self.parentType, parentID: self.parentID).map(ResponseViewModel.init).sorted(by: { return $0.order < $1.order})
     }
     
     func getAllPrompts() -> [UUID]{
@@ -56,12 +59,12 @@ class ResponseViewModel: Identifiable {
     
     init(response: Response){
         self.id = response.id ?? UUID()
-        self.answer = response.answer ?? ""
+        self.answer = response.answer ?? response.prompt?.fill ?? "Type here"
         self.prompt = response.prompt?.text ?? "Notes:"
         self.order = Int(response.order)
     }
     
     func save(){
-        CoreDataManager.shared.updateResponse(id:id, answer:answer)
+        ResponseDataManager().updateResponse(id:id, answer:answer)
     }
 }

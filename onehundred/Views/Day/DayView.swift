@@ -10,7 +10,7 @@ import SwiftUI
 
 struct DayView: View {
     @ObservedObject var dayVM = DayViewModel()
-    
+
     static let taskDateFormat: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
@@ -21,19 +21,33 @@ struct DayView: View {
         self.dayVM = DayViewModel(id: id)
     }
     
-    var body: some View {
-        VStack {
-            Text("Day \(self.dayVM.count)")
-                .font(.largeTitle)
-            
-            Text("Checkpoint: \(String(self.dayVM.isCheckpoint))")
-    
-            //Show tasks
-            TaskListView(dayID: dayVM.id)
+    func save(){
+        //save responses
         
-            //Show prompts
-            ResponseListView(id:self.dayVM.id, parentType: ResponseParentType.Day)
+    }
+    
+    var body: some View {
+        ScrollView{
+            VStack {
+                Text("Day \(self.dayVM.count)")
+                    .font(.largeTitle)
+                
+                Text("Checkpoint: \(String(self.dayVM.isCheckpoint))")
+        
+            
+                //Show tasks
+                TaskListView(dayID: dayVM.id)
+                
+                //Show prompts
+                ResponseListView(id:self.dayVM.id, parentType: ResponseParentType.Day)
 
+                Button(action: save) {
+                    Image(systemName: "checkmark.circle")
+                        .foregroundColor(.green)
+                        .imageScale(.large)
+                }
+
+            }
         }
     }
 }

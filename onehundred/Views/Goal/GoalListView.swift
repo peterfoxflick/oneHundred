@@ -10,16 +10,34 @@ import SwiftUI
 
 struct GoalListView: View {
     @ObservedObject var goalsVM:GoalListViewModel = GoalListViewModel()
+    @State var draftGoalVM:GoalViewModel = GoalViewModel()
+    
+    
+    func delete(at offsets: IndexSet) {
+        offsets.forEach { index in
+            let goalVM = self.goalsVM.goals[index]
+            self.goalsVM.delete(id: goalVM.id)
+        }
+    }
     
     var body: some View {
         
         NavigationView {
-            List(self.goalsVM.goals) { goal in
-                NavigationLink(destination: GoalHost(goalVM: goal)) {
-                    Text("\(goal.durration) days of \(goal.text)")
+            List{
+                ForEach(self.goalsVM.goals){ goal in
+                    NavigationLink(destination: GoalHost(goalVM: goal)) {
+                        Text("\(goal.durration) days of \(goal.text)")
+                    }
                 }
+            .onDelete(perform: delete)
             }
             .navigationBarTitle(Text("Goals"))
+            .navigationBarItems(trailing: NavigationLink(destination: GoalHost(goalVM: draftGoalVM, edit: true), label:{
+                Image(systemName: "plus.circle.fill")
+                    .imageScale(.large)})).onTapGesture {
+                        self.goalsVM.fetchAllGoals()
+            }
+            
         }
     }
 }

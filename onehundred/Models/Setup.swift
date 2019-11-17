@@ -15,24 +15,27 @@ class Setup{
     func dayPrompts() -> [UUID] {
         var prompts = [UUID]()
         
+        let promptDM = PromptDataManager()
+
+        
         // Gratitud
-        var prompt = CoreDataManager.shared.addPrompt(text: "Today I’m grateful for:", fill: "my great friend Susan")
+        var prompt = promptDM.addPrompt(text: "Today I’m grateful for:", fill: "my great friend Susan")
         if prompt.id != nil {
             prompts.append(prompt.id!)
         }
         
         // Struggles
-        prompt = CoreDataManager.shared.addPrompt(text: "Struggles encountered:", fill: "focusing for two hours on homework")
+        prompt = promptDM.addPrompt(text: "Struggles encountered:", fill: "focusing for two hours on homework")
         if prompt.id != nil {
             prompts.append(prompt.id!)
         }
         // Possible solutions:
-        prompt = CoreDataManager.shared.addPrompt(text: "Possible solutions:", fill: "take a break ever 30 minutes to walk arround the library.")
+        prompt = promptDM.addPrompt(text: "Possible solutions:", fill: "take a break ever 30 minutes to walk arround the library.")
         if prompt.id != nil {
             prompts.append(prompt.id!)
         }
         // Thoughts for the day:
-        prompt = CoreDataManager.shared.addPrompt(text: "Additional thoughts:", fill: "Take a moment to reflect and treat this as a journal entry")
+        prompt = promptDM.addPrompt(text: "Additional thoughts:", fill: "Take a moment to reflect and treat this as a journal entry")
         if prompt.id != nil {
             prompts.append(prompt.id!)
         }
@@ -42,28 +45,30 @@ class Setup{
     func goalPrompts() -> [UUID] {
         var prompts = [UUID]()
         
+        let promptDM = PromptDataManager()
+        
         // What is your goal:
-        var prompt = CoreDataManager.shared.addPrompt(text: "What is your goal:", fill: "Run a half marathon")
+        var prompt = promptDM.addPrompt(text: "What is your goal:", fill: "Run a half marathon")
         if prompt.id != nil {
             prompts.append(prompt.id!)
         }
         // Why is this important to you?
-        prompt = CoreDataManager.shared.addPrompt(text: "Why is this important to you?", fill: "Improve my health, live longer, be happier")
+        prompt = promptDM.addPrompt(text: "Why is this important to you?", fill: "Improve my health, live longer, be happier")
         if prompt.id != nil {
             prompts.append(prompt.id!)
         }
         // How can you measure the success of your goal?
-        prompt = CoreDataManager.shared.addPrompt(text: "How can you measure the success of your goal?", fill: "Registering for the local marathon run in 110 days")
+        prompt = promptDM.addPrompt(text: "How can you measure the success of your goal?", fill: "Registering for the local marathon run in 110 days")
         if prompt.id != nil {
             prompts.append(prompt.id!)
         }
         // What tools do you need?
-        prompt = CoreDataManager.shared.addPrompt(text: "What tools do you need?", fill: "Running shoes, fitness tracking app")
+        prompt = promptDM.addPrompt(text: "What tools do you need?", fill: "Running shoes, fitness tracking app")
         if prompt.id != nil {
             prompts.append(prompt.id!)
         }
         // Who will be able to help you along the way?
-        prompt = CoreDataManager.shared.addPrompt(text: "Who will be able to help you along the way?", fill: "Susan, Mike and my running club")
+        prompt = promptDM.addPrompt(text: "Who will be able to help you along the way?", fill: "Susan, Mike and my running club")
         if prompt.id != nil {
             prompts.append(prompt.id!)
         }
