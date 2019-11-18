@@ -19,8 +19,8 @@ class GoalViewModel: ObservableObject, Identifiable {
     
     var goalDM = GoalDataManager()
     
-    init(){
-        let goal = goalDM.addGoal(text: "", durration: 100, checkpointLength: 10)
+    init(text: String, durration: Int, checkpointLength: Int ){
+        let goal = goalDM.addGoal(text: text, durration: durration, checkpointLength: checkpointLength)
         self.id = goal?.id ?? UUID()
         self.text = goal?.text ?? "???"
         self.checkpointLength = Int(goal?.checkpointLength ?? 10)

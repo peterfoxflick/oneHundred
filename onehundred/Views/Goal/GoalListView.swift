@@ -10,7 +10,6 @@ import SwiftUI
 
 struct GoalListView: View {
     @ObservedObject var goalsVM:GoalListViewModel = GoalListViewModel()
-    @State var draftGoalVM:GoalViewModel = GoalViewModel()
     
     
     func delete(at offsets: IndexSet) {
@@ -32,11 +31,11 @@ struct GoalListView: View {
             .onDelete(perform: delete)
             }
             .navigationBarTitle(Text("Goals"))
-            .navigationBarItems(trailing: NavigationLink(destination: GoalHost(goalVM: draftGoalVM, edit: true), label:{
-                Image(systemName: "plus.circle.fill")
-                    .imageScale(.large)})).onTapGesture {
-                        self.goalsVM.fetchAllGoals()
-            }
+//            .navigationBarItems(trailing: NavigationLink(destination: GoalHost(goalVM: draftGoalVM, edit: true), label:{
+//                Image(systemName: "plus.circle.fill")
+//                    .imageScale(.large)})).onTapGesture {
+//                        self.goalsVM.fetchAllGoals()
+//            }
             
         }
     }

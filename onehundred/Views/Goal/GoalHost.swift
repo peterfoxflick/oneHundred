@@ -11,7 +11,6 @@ import SwiftUI
 struct GoalHost: View {
     @Environment(\.editMode) var mode
     @ObservedObject var goalVM: GoalViewModel
-    @State var draftGoalVM = GoalViewModel()
                 
     init(goalID: UUID){
         self.goalVM = GoalViewModel(goalID: goalID)
@@ -25,6 +24,7 @@ struct GoalHost: View {
         } else {
             self.mode?.wrappedValue = .active
         }
+
     }
     
     init(goalVM: GoalViewModel){
@@ -32,11 +32,11 @@ struct GoalHost: View {
     }
     
     func save(){
-        goalVM.text = draftGoalVM.text
-        goalVM.checkpointLength = draftGoalVM.checkpointLength
-        goalVM.durration = draftGoalVM.durration
-
-        goalVM.save()
+//        goalVM.text = draftGoalVM.text
+//        goalVM.checkpointLength = draftGoalVM.checkpointLength
+//        goalVM.durration = draftGoalVM.durration
+//
+//        goalVM.save()
     }
     
     var body: some View{
@@ -45,9 +45,9 @@ struct GoalHost: View {
             if self.mode?.wrappedValue == .inactive {
                 GoalView(goalVM: self.goalVM)
             } else {
-                GoalEditor(goalVM: self.draftGoalVM)
+                GoalEditor(goalVM: self.goalVM)
                 .onAppear(perform: {
-                    self.draftGoalVM = self.goalVM
+                    //self.goalVM = self.goalVM
                 })
                 .onDisappear(perform: {
                     self.save()
