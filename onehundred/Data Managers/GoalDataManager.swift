@@ -91,19 +91,23 @@ class GoalDataManager {
     }
     
     func editGoal(id:UUID, text:String, durration: Int, checkpointLength: Int) -> Goal? {
-        let goal = getGoal(id: id)
-        goal?.text = text
-        if(durration > 0){
-            goal?.durration = Int16(durration)
+        var goal = getGoal(id: id)
+        if((goal) != nil){
+            goal?.text = text
+            if(durration > 0){
+                goal?.durration = Int16(durration)
+            } else {
+                goal?.durration = Int16(100)
+            }
+            goal?.checkpointLength = Int16(checkpointLength)
+            
+            do {
+                try self.managedObjectContext.save()
+            } catch {
+                print(error)
+            }
         } else {
-            goal?.durration = Int16(100)
-        }
-        goal?.checkpointLength = Int16(checkpointLength)
-        
-        do {
-            try self.managedObjectContext.save()
-        } catch {
-            print(error)
+            goal = addGoal(text: text, durration: durration, checkpointLength: checkpointLength)
         }
         
         return goal

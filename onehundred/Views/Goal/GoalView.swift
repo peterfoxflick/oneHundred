@@ -10,6 +10,7 @@ import SwiftUI
 
 struct GoalView: View {
     @ObservedObject var goalVM: GoalViewModel
+    @State var showEditor:Bool = false
                 
     init(goalID: UUID){
         self.goalVM = GoalViewModel(goalID: goalID)
@@ -33,7 +34,18 @@ struct GoalView: View {
             DayListView(goalVM: self.goalVM)
             
             
-        }
+        }.sheet(isPresented: $showEditor, content: {
+            GoalEditor(goalVM: self.goalVM, isPresented: self.$showEditor);
+        })
+        .navigationBarTitle(self.goalVM.text)
+        .navigationBarItems(trailing:
+            Image(systemName: "square.and.pencil")
+            .imageScale(.large).onTapGesture {
+                self.showEditor = true;
+            })
+         
+
+
     }
 
 

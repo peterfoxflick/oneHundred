@@ -31,7 +31,6 @@
 		913E37612345115D0075493C /* DayDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913E37602345115D0075493C /* DayDataManagerTests.swift */; };
 		9148E72B2343A2B700E19535 /* GoalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9148E72A2343A2B700E19535 /* GoalDataManager.swift */; };
 		9148E72D2343A52200E19535 /* GoalDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9148E72C2343A52200E19535 /* GoalDataManagerTests.swift */; };
-		91A94DB22343BBE300FBA449 /* GoalHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A94DB12343BBE300FBA449 /* GoalHost.swift */; };
 		91A94DB42343BBF600FBA449 /* GoalEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A94DB32343BBF600FBA449 /* GoalEditor.swift */; };
 		91BBFCF123327EE400171847 /* GoalListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BBFCF023327EE400171847 /* GoalListView.swift */; };
 		91BBFCF323327EF800171847 /* GoalListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BBFCF223327EF800171847 /* GoalListViewModel.swift */; };
@@ -94,7 +93,6 @@
 		913E37602345115D0075493C /* DayDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayDataManagerTests.swift; sourceTree = "<group>"; };
 		9148E72A2343A2B700E19535 /* GoalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDataManager.swift; sourceTree = "<group>"; };
 		9148E72C2343A52200E19535 /* GoalDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDataManagerTests.swift; sourceTree = "<group>"; };
-		91A94DB12343BBE300FBA449 /* GoalHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalHost.swift; sourceTree = "<group>"; };
 		91A94DB32343BBF600FBA449 /* GoalEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalEditor.swift; sourceTree = "<group>"; };
 		91BBFCF023327EE400171847 /* GoalListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalListView.swift; sourceTree = "<group>"; };
 		91BBFCF223327EF800171847 /* GoalListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalListViewModel.swift; sourceTree = "<group>"; };
@@ -230,7 +228,6 @@
 			isa = PBXGroup;
 			children = (
 				91BBFCF023327EE400171847 /* GoalListView.swift */,
-				91A94DB12343BBE300FBA449 /* GoalHost.swift */,
 				91158BA4232AAAA800EFF997 /* GoalView.swift */,
 				91A94DB32343BBF600FBA449 /* GoalEditor.swift */,
 			);
@@ -415,7 +412,6 @@
 				9148E72B2343A2B700E19535 /* GoalDataManager.swift in Sources */,
 				912789842326B41000D5CBA4 /* AppDelegate.swift in Sources */,
 				912BBF0623284EDB001DE1B6 /* NSManagedObjectContextExtensions.swift in Sources */,
-				91A94DB22343BBE300FBA449 /* GoalHost.swift in Sources */,
 				91158BA5232AAAA800EFF997 /* GoalView.swift in Sources */,
 				9127898B2326B41000D5CBA4 /* ContentView.swift in Sources */,
 				91BBFCF323327EF800171847 /* GoalListViewModel.swift in Sources */,

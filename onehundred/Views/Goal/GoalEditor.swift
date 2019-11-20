@@ -10,11 +10,23 @@ import SwiftUI
 
 struct GoalEditor: View {
     @ObservedObject var goalVM: GoalViewModel
-    
+    var isPresented: Binding<Bool>
+
+    var durrationProxy: Binding<String> {
+        Binding<String>(
+            get: { String(format: "%i", Int(self.goalVM.durration)) },
+            set: {
+                if let value = NumberFormatter().number(from: $0) {
+                    self.goalVM.durration = value.intValue
+                }
+            }
+        )
+    }
 
     
-    init(goalVM: GoalViewModel){
+    init(goalVM: GoalViewModel, isPresented: Binding<Bool>){
         self.goalVM = goalVM
+        self.isPresented = isPresented
     }
     
     private var numberFormatter: NumberFormatter = {
@@ -25,22 +37,13 @@ struct GoalEditor: View {
 
     
     var body: some View {
-        let durrationProxy = Binding<String>(
-            get: { String(format: "%i", Int(self.goalVM.durration)) },
-            set: {
-                if let value = NumberFormatter().number(from: $0) {
-                    self.goalVM.durration = value.intValue
-                }
-            }
-        )
-
-        return ScrollView{
+        ScrollView{
             VStack{
                 Group {
                     VStack {
                         Text("How many days should your goal last?")
                             .lineLimit(nil)
-                        TextField("100", text: durrationProxy)
+                        TextField("100", text: self.durrationProxy)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                             .frame(width: CGFloat(100), alignment: .center)
                             .multilineTextAlignment(.center)
@@ -73,7 +76,26 @@ struct GoalEditor: View {
                     }
                 }
                 
-            }
+                Group{
+                    HStack{
+                        Button(action: {
+                            self.isPresented.wrappedValue = false;
+                        }, label: {
+                            Text("Dismiss")
+                        })
+
+                        
+                        Button(action: {
+                            self.goalVM.save()
+                            self.isPresented.wrappedValue = false;
+                        }, label: {
+                            Text("Save")
+                        })
+
+                    }
+                }
+                
+            }.padding()
         }
     }
 }
