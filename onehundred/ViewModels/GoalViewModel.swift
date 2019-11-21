@@ -20,11 +20,10 @@ class GoalViewModel: ObservableObject, Identifiable {
     var goalDM = GoalDataManager()
     
     init(text: String, durration: Int, checkpointLength: Int ){
-        let goal = goalDM.addGoal(text: text, durration: durration, checkpointLength: checkpointLength)
-        self.id = goal?.id ?? UUID()
-        self.text = goal?.text ?? "???"
-        self.checkpointLength = Int(goal?.checkpointLength ?? 10)
-        self.durration = Int(goal?.durration ?? 401)
+        self.id = UUID()
+        self.text = text
+        self.checkpointLength = checkpointLength
+        self.durration = durration
         self.days = [DayViewModel]()
     }
     

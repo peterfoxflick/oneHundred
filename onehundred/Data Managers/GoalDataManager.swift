@@ -92,6 +92,10 @@ class GoalDataManager {
     
     func editGoal(id:UUID, text:String, durration: Int, checkpointLength: Int) -> Goal? {
         var goal = getGoal(id: id)
+        if(text == "" || durration <= 0 || checkpointLength > 10 || checkpointLength < 0){
+            return goal // Do not make changes if not allowed
+        }
+        
         if((goal) != nil){
             goal?.text = text
             if(durration > 0){

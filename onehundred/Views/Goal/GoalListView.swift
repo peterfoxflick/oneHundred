@@ -35,17 +35,17 @@ struct GoalListView: View {
                     }
                 }
             .onDelete(perform: delete)
-            }.sheet(isPresented: $showNewGoal, onDismiss:
-                {self.update() }
-             , content: {
-                GoalEditor(goalVM: self.newGoal, isPresented: self.$showNewGoal);
+            .onAppear(perform: update)
+            }.sheet(isPresented: $showNewGoal, content: {
+                GoalEditor(goalVM: self.newGoal, isPresented: self.$showNewGoal)
+                    .onDisappear(perform: {
+                        self.update()
+                        self.newGoal = GoalViewModel(text: "", durration: 100, checkpointLength: 10)
+
+                    })
                 })
             .navigationBarTitle(Text("Goals"))
-            .navigationBarItems(leading:
-                    Image(systemName: "arrow.clockwise")
-                    .imageScale(.large).onTapGesture {
-                        self.update();
-                    },
+            .navigationBarItems(
                 trailing:
                 Image(systemName: "plus.circle.fill")
                 .imageScale(.large).onTapGesture {

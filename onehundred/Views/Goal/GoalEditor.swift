@@ -92,7 +92,7 @@ struct GoalEditor: View {
                             Text("Save")
                         })
 
-                    }
+                    }.padding()
                 }
                 
             }.padding()
