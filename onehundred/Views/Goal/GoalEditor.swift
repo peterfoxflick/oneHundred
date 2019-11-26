@@ -82,7 +82,15 @@ struct GoalEditor: View {
                             self.isPresented.wrappedValue = false;
                         }, label: {
                             Text("Dismiss")
-                        })
+                            .fontWeight(.bold)
+                            .font(.subheadline)
+                            .foregroundColor(.gray)
+                            .padding()
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 20)
+                                    .stroke(Color.gray, lineWidth: 3)
+                            )
+                            }).padding()
 
                         
                         Button(action: {
@@ -90,8 +98,15 @@ struct GoalEditor: View {
                             self.isPresented.wrappedValue = false;
                         }, label: {
                             Text("Save")
-                        })
-
+                            .fontWeight(.bold)
+                                .font(.subheadline)
+                            .foregroundColor(.blue)
+                            .padding()
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 20)
+                                    .stroke(Color.blue, lineWidth: 3)
+                            )
+                            })
                     }.padding()
                 }
                 

@@ -11,6 +11,8 @@ import SwiftUI
 struct GoalView: View {
     @ObservedObject var goalVM: GoalViewModel
     @State var showEditor:Bool = false
+    @State var showNewDay:Bool = false
+
                 
     init(goalID: UUID){
         self.goalVM = GoalViewModel(goalID: goalID)
@@ -34,15 +36,34 @@ struct GoalView: View {
             DayListView(goalVM: self.goalVM)
             
             
-        }.sheet(isPresented: $showEditor, content: {
-            GoalEditor(goalVM: self.goalVM, isPresented: self.$showEditor);
-        })
-        .navigationBarTitle(self.goalVM.text)
+        }
         .navigationBarItems(trailing:
-            Image(systemName: "square.and.pencil")
-            .imageScale(.large).onTapGesture {
-                self.showEditor = true;
-            })
+            HStack{
+                
+                if(self.goalVM.days.count < self.goalVM.durration) {
+                    Image(systemName: "plus.circle.fill")
+                        .imageScale(.large).onTapGesture {
+                            self.showNewDay = true;
+                        }.sheet(isPresented: $showNewDay, onDismiss: {
+                            self.goalVM.fetch()
+                        }, content: {
+                            DayView(id: DayViewModel(goal: self.goalVM).id)
+                        })
+
+                }
+                
+                
+                Image(systemName: "square.and.pencil")
+                .imageScale(.large).onTapGesture {
+                    self.showEditor = true;
+                }.sheet(isPresented: $showEditor, content: {
+                GoalEditor(goalVM: self.goalVM, isPresented: self.$showEditor);
+                })
+                
+            }.padding()
+        )
+
+
          
 
 

@@ -41,12 +41,6 @@ struct DayView: View {
                 //Show prompts
                 ResponseListView(id:self.dayVM.id, parentType: ResponseParentType.Day)
 
-                Button(action: save) {
-                    Image(systemName: "checkmark.circle")
-                        .foregroundColor(.green)
-                        .imageScale(.large)
-                }
-
             }
         }
     }

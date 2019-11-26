@@ -39,6 +39,12 @@ class ResponseListViewModel: ObservableObject {
         self.responses = responseDM.getResponsesFromParent(parentType: self.parentType, parentID: self.parentID).map(ResponseViewModel.init).sorted(by: { return $0.order < $1.order})
     }
     
+    func save(){
+        for res in self.responses {
+            res.save()
+        }
+    }
+    
     func getAllPrompts() -> [UUID]{
         switch self.parentType {
         case .Goal:
@@ -51,9 +57,9 @@ class ResponseListViewModel: ObservableObject {
 
 
 
-class ResponseViewModel: Identifiable {
+class ResponseViewModel: ObservableObject, Identifiable {
     var id:UUID
-    var answer:String
+    @Published var answer:String
     var prompt:String
     var order:Int
     
@@ -65,6 +71,7 @@ class ResponseViewModel: Identifiable {
     }
     
     func save(){
+        print("Saving response: \(self.prompt),  \(self.answer)")
         ResponseDataManager().updateResponse(id:id, answer:answer)
     }
 }

@@ -16,7 +16,7 @@ struct DayListView: View {
     }
     
     var body: some View {
-            List(self.goalVM.days){ day in
+        List(self.goalVM.days.reversed()){ day in
                 NavigationLink(destination: DayView(id:day.id)) {
                         Text(String("Day \(day.count)"))
                             .fontWeight(day.isCheckpoint ? Font.Weight.bold : Font.Weight.regular)

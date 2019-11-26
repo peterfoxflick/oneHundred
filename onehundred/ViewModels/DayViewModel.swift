@@ -25,6 +25,14 @@ class DayViewModel: ObservableObject, Identifiable {
         self.goalId = day?.goal?.id ?? UUID()
     }
     
+    init(goal: GoalViewModel){
+        let day = DayDataManager().addDay(goalID: goal.id)
+        self.id = day?.id ?? UUID()
+        self.count = Int(day?.count ?? 1)
+        self.isCheckpoint = day?.isCheckpoint ?? false
+        self.goalId = day?.goal?.id ?? UUID()
+    }
+    
     init(day:Day){
         self.id = day.id ?? UUID()
         self.count = Int(day.count)

@@ -62,4 +62,12 @@ class GoalViewModel: ObservableObject, Identifiable {
     func delete(){
         goalDM.deleteGoal(id: self.id)
     }
+    
+    func deleteLastDay(){
+        let id = self.days.last?.id;
+        if(id != nil){
+            DayDataManager().deleteDay(id: id!)
+        }
+    }
+    
 }
