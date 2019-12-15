@@ -51,6 +51,20 @@ class PromptDataManager {
         return prompts.first
     }
     
+    func getAllPrompts() -> [Prompt] {
+        var prompts = [Prompt]()
+        
+        let request: NSFetchRequest<Prompt> = Prompt.fetchRequest()
+        
+        do {
+            prompts = try self.managedObjectContext.fetch(request)
+        } catch let error as NSError {
+            print(error)
+        }
+        
+        return prompts
+    }
+    
     func updatePrompt(id: UUID, text: String? = nil, fill:String? = nil) -> Prompt? {
         let prompt = getPrompt(id: id)
         if(prompt == nil) {

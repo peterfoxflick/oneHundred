@@ -27,6 +27,8 @@
 		912789A92326B41100D5CBA4 /* onehundredUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912789A82326B41100D5CBA4 /* onehundredUITests.swift */; };
 		912BBF0623284EDB001DE1B6 /* NSManagedObjectContextExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912BBF0523284EDB001DE1B6 /* NSManagedObjectContextExtensions.swift */; };
 		9133ABEE2342691800EED636 /* TaskDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9133ABED2342691800EED636 /* TaskDataManager.swift */; };
+		913A227123A6E28300DD28B5 /* PromptsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913A227023A6E28300DD28B5 /* PromptsListView.swift */; };
+		913A227323A6E29D00DD28B5 /* PromptViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913A227223A6E29D00DD28B5 /* PromptViewModel.swift */; };
 		913E375F2345085A0075493C /* DayDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913E375E2345085A0075493C /* DayDataManager.swift */; };
 		913E37612345115D0075493C /* DayDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913E37602345115D0075493C /* DayDataManagerTests.swift */; };
 		9148E72B2343A2B700E19535 /* GoalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9148E72A2343A2B700E19535 /* GoalDataManager.swift */; };
@@ -89,6 +91,8 @@
 		912789AA2326B41100D5CBA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		912BBF0523284EDB001DE1B6 /* NSManagedObjectContextExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSManagedObjectContextExtensions.swift; sourceTree = "<group>"; };
 		9133ABED2342691800EED636 /* TaskDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDataManager.swift; sourceTree = "<group>"; };
+		913A227023A6E28300DD28B5 /* PromptsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptsListView.swift; sourceTree = "<group>"; };
+		913A227223A6E29D00DD28B5 /* PromptViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptViewModel.swift; sourceTree = "<group>"; };
 		913E375E2345085A0075493C /* DayDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayDataManager.swift; sourceTree = "<group>"; };
 		913E37602345115D0075493C /* DayDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayDataManagerTests.swift; sourceTree = "<group>"; };
 		9148E72A2343A2B700E19535 /* GoalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDataManager.swift; sourceTree = "<group>"; };
@@ -252,6 +256,7 @@
 				91A94DB02343BBCE00FBA449 /* Goal */,
 				91E52E6B232963040099E87B /* TaskListView.swift */,
 				91158BA8232ADFF700EFF997 /* ResponseListView.swift */,
+				913A227023A6E28300DD28B5 /* PromptsListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -264,6 +269,7 @@
 				91158BA6232AABDA00EFF997 /* GoalViewModel.swift */,
 				91BBFCF223327EF800171847 /* GoalListViewModel.swift */,
 				91158BAA232AE01800EFF997 /* ResponseListViewModel.swift */,
+				913A227223A6E29D00DD28B5 /* PromptViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -405,6 +411,7 @@
 				91158B9F2329990E00EFF997 /* Setup.swift in Sources */,
 				91158BAB232AE01800EFF997 /* ResponseListViewModel.swift in Sources */,
 				91D0C41F232AF06C003D221A /* User.swift in Sources */,
+				913A227323A6E29D00DD28B5 /* PromptViewModel.swift in Sources */,
 				91CAF82C23393902008810B4 /* DayListView.swift in Sources */,
 				91158BA12329A46800EFF997 /* DayView.swift in Sources */,
 				91E52E6A23295F7F0099E87B /* TaskListViewModel.swift in Sources */,
@@ -418,6 +425,7 @@
 				91F11733234BB6140083FCA8 /* PromptDataManager.swift in Sources */,
 				910547EA235A170200609181 /* ResponseDataManager.swift in Sources */,
 				91158BA7232AABDA00EFF997 /* GoalViewModel.swift in Sources */,
+				913A227123A6E28300DD28B5 /* PromptsListView.swift in Sources */,
 				91BC2E76232849C3009F62A9 /* CoreDataManager.swift in Sources */,
 				913E375F2345085A0075493C /* DayDataManager.swift in Sources */,
 				912789862326B41000D5CBA4 /* SceneDelegate.swift in Sources */,

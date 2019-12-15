@@ -11,6 +11,7 @@ import SwiftUI
 struct GoalListView: View {
     @ObservedObject var goalsVM:GoalListViewModel = GoalListViewModel()
     @State var showNewGoal:Bool = false
+    @State var showPrompts:Bool = false
     @State var newGoal:GoalViewModel = GoalViewModel(text: "", durration: 100, checkpointLength: 10)
     
     
@@ -40,17 +41,29 @@ struct GoalListView: View {
             .navigationBarTitle(Text("Goals"))
             .navigationBarItems(
                 trailing:
-                Image(systemName: "plus.circle.fill")
-                .imageScale(.large).onTapGesture {
-                    self.showNewGoal = true;
-                }.sheet(isPresented: $showNewGoal, content: {
-                GoalEditor(goalVM: self.newGoal, isPresented: self.$showNewGoal)
-                    .onDisappear(perform: {
-                        self.update()
-                        self.newGoal = GoalViewModel(text: "", durration: 100, checkpointLength: 10)
+                HStack{
+                    Image(systemName: "plus.circle.fill")
+                    .imageScale(.large).onTapGesture {
+                        self.showNewGoal = true;
+                    }.sheet(isPresented: $showNewGoal, content: {
+                    GoalEditor(goalVM: self.newGoal, isPresented: self.$showNewGoal)
+                        .onDisappear(perform: {
+                            self.update()
+                            self.newGoal = GoalViewModel(text: "", durration: 100, checkpointLength: 10)
 
+                        })
                     })
-                }))
+                    
+                    Image(systemName: "gear")
+                    .imageScale(.large).onTapGesture {
+                        self.showPrompts = true;
+                    }.sheet(isPresented: $showPrompts, content: {
+                        PromptsListView()
+                    })
+                    
+                    
+                }
+            )
         }
     }
 }

@@ -17,10 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         print("About to setup everything")
         let setup = Setup()
-        user.goalPrompts = setup.goalPrompts()
-        user.dayPrompts = setup.dayPrompts()
-        
-        _ = setup.goal()
+        setup.run()
         
         return true
     }

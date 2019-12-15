@@ -22,6 +22,11 @@ struct GoalView: View {
         self.goalVM = goalVM
     }
     
+    func deleteDay(){
+        goalVM.days.last?.delete()
+        goalVM.fetch()
+    }
+    
     var body: some View{
         VStack{
             
@@ -40,8 +45,27 @@ struct GoalView: View {
         .navigationBarItems(trailing:
             HStack{
                 
+                Image(systemName: "gear")
+                .imageScale(.large).onTapGesture {
+                    self.showEditor = true;
+                }.sheet(isPresented: $showEditor, content: {
+                GoalEditor(goalVM: self.goalVM, isPresented: self.$showEditor);
+                })
+                
+                
+                
+                
+                if(self.goalVM.days.count > 0) {
+                    Image(systemName: "minus.circle")
+                        .foregroundColor(.red)
+                        .imageScale(.large).onTapGesture {
+                            self.deleteDay()
+                        }
+                }
+                
+                
                 if(self.goalVM.days.count < self.goalVM.durration) {
-                    Image(systemName: "plus.circle.fill")
+                    Image(systemName: "square.and.pencil")
                         .imageScale(.large).onTapGesture {
                             self.showNewDay = true;
                         }.sheet(isPresented: $showNewDay, onDismiss: {
@@ -49,16 +73,8 @@ struct GoalView: View {
                         }, content: {
                             DayView(id: DayViewModel(goal: self.goalVM).id)
                         })
-
                 }
-                
-                
-                Image(systemName: "square.and.pencil")
-                .imageScale(.large).onTapGesture {
-                    self.showEditor = true;
-                }.sheet(isPresented: $showEditor, content: {
-                GoalEditor(goalVM: self.goalVM, isPresented: self.$showEditor);
-                })
+
                 
             }.padding()
         )

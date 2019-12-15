@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14897.2" systemVersion="18G95" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19B88" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
     <entity name="Day" representedClassName="Day" syncable="YES" codeGenerationType="class">
         <attribute name="count" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
@@ -7,8 +7,8 @@
         <attribute name="isCheckpoint" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="score" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="goal" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Goal" inverseName="days" inverseEntity="Goal"/>
-        <relationship name="responses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Response" inverseName="day" inverseEntity="Response"/>
-        <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task" inverseName="day" inverseEntity="Task"/>
+        <relationship name="responses" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Response" inverseName="day" inverseEntity="Response"/>
+        <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Task" inverseName="day" inverseEntity="Task"/>
     </entity>
     <entity name="Goal" representedClassName="Goal" syncable="YES" codeGenerationType="class">
         <attribute name="checkpointLength" optional="YES" attributeType="Integer 16" defaultValueString="10" usesScalarValueType="YES"/>
@@ -17,8 +17,8 @@
         <attribute name="durration" optional="YES" attributeType="Integer 16" defaultValueString="100" usesScalarValueType="YES"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="text" optional="YES" attributeType="String"/>
-        <relationship name="days" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Day" inverseName="goal" inverseEntity="Day"/>
-        <relationship name="responses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Response" inverseName="goal" inverseEntity="Response"/>
+        <relationship name="days" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Day" inverseName="goal" inverseEntity="Day"/>
+        <relationship name="responses" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Response" inverseName="goal" inverseEntity="Response"/>
     </entity>
     <entity name="Prompt" representedClassName=".Prompt" syncable="YES" codeGenerationType="class">
         <attribute name="fill" optional="YES" attributeType="String"/>
@@ -42,8 +42,8 @@
         <relationship name="day" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Day" inverseName="tasks" inverseEntity="Day"/>
     </entity>
     <elements>
-        <element name="Day" positionX="-29.578125" positionY="105.7734375" width="128" height="163"/>
-        <element name="Goal" positionX="-23" positionY="313.8359375" width="132.09765625" height="163"/>
+        <element name="Day" positionX="-29.578125" positionY="105.7734375" width="128" height="28"/>
+        <element name="Goal" positionX="-23" positionY="313.8359375" width="132.09765625" height="28"/>
         <element name="Prompt" positionX="189.76171875" positionY="54.7109375" width="128" height="103"/>
         <element name="Response" positionX="185.0078125" positionY="225.4609375" width="128" height="133"/>
         <element name="Task" positionX="-215.39453125" positionY="150.87109375" width="128" height="118"/>

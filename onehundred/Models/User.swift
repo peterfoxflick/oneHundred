@@ -21,15 +21,42 @@ class User {
     
     func save(){
         let defaults = UserDefaults.standard
-        defaults.set(self.goalPrompts, forKey: "GoalPrompts")
-        defaults.set(self.checkpointPrompts, forKey: "GoalPrompts")
-        defaults.set(self.dayPrompts, forKey: "GoalPrompts")
+        
+        let stringDayPrompt = self.dayPrompts.map{ $0.uuidString }
+//        defaults.set(self.goalPrompts, forKey: "goalPrompts")
+//        defaults.set(self.checkpointPrompts, forKey: "checkpointPrompts")
+        defaults.set(stringDayPrompt, forKey: "dayPrompts")
     }
     
     func fetch(){
+        self.dayPrompts.removeAll()
+
+        
+        
         let defaults = UserDefaults.standard
-        self.goalPrompts = defaults.object(forKey: "GoalPrompts") as? [UUID] ?? [UUID]()
-        self.checkpointPrompts = defaults.object(forKey:  "GoalPrompts") as? [UUID] ?? [UUID]()
-        self.dayPrompts = defaults.object(forKey: "GoalPrompts") as? [UUID] ?? [UUID]()
+//        self.goalPrompts = defaults.object(forKey: "goalPrompts") as? [UUID] ?? [UUID]()
+//        self.checkpointPrompts = defaults.object(forKey:  "checkpointPrompts") as? [UUID] ?? [UUID]()
+        let stringDayPrompts = defaults.object(forKey: "dayPrompts") as? [String] ?? [String]()
+        
+        
+        for id in stringDayPrompts {
+            let uid = UUID.init(uuidString: id)
+            
+            if(uid != nil){
+                self.dayPrompts.append(uid!)
+            }
+        }
+    }
+    
+    func addDayPrompt(id:UUID){
+        self.dayPrompts.append(id)
+        save()
+    }
+    
+    func removeDayPrompt(id:UUID){
+        if let index = self.dayPrompts.firstIndex(of: id) {
+            self.dayPrompts.remove(at: index)
+        }
+        save()
     }
 }

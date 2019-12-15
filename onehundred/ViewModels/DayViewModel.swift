@@ -47,6 +47,10 @@ class DayViewModel: ObservableObject, Identifiable {
         self.isCheckpoint = day?.isCheckpoint ?? false
         self.goalId = day?.goal?.id ?? UUID()
     }
+    
+    func delete(){
+        DayDataManager().deleteDay(id: self.id)
+    }
 
 }
 

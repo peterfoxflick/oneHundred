@@ -32,7 +32,9 @@ struct DayView: View {
                 Text("Day \(self.dayVM.count)")
                     .font(.largeTitle)
                 
-                Text("Checkpoint: \(String(self.dayVM.isCheckpoint))")
+                if(self.dayVM.isCheckpoint){
+                    Text("Checkpoint day")
+                }
         
             
                 //Show tasks
@@ -41,7 +43,7 @@ struct DayView: View {
                 //Show prompts
                 ResponseListView(id:self.dayVM.id, parentType: ResponseParentType.Day)
 
-            }
+            }.padding()
         }
     }
 }

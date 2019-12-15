@@ -9,8 +9,15 @@
 import Foundation
 
 class Setup{
-    //I am gratefull for:
-    // Wonderfull things
+    func run(){
+        let _ = goal()
+        
+        user.fetch()
+        
+        if(user.dayPrompts.count == 0){
+            user.dayPrompts = self.dayPrompts()
+        }
+    }
     
     func dayPrompts() -> [UUID] {
         var prompts = [UUID]()
